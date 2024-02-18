@@ -6,4 +6,29 @@ raysen bading
 
 panget ni bejay
 
-ah gegege
+ah gegege// === HASHTABLE OPERATIONS === //
+	public String search(String input) {
+		if (isTableEmpty()) {
+			return "\nNotice: Table is currently empty.";
+		} // end if
+		
+		int hashKey = hashFunction(input);
+		
+		int counter = 0;
+		while (true) {
+			String tableElement = getHashTable()[hashKey];
+			if (input.equals(tableElement)) {
+				return " === ELEMENT FOUND === \n";
+			} // end if
+			
+			++hashKey;
+			hashKey %= size;
+			counter++;
+
+			if (counter == size) {
+				break;
+			} // end if
+		} // end while
+
+		return " === ELEMENT NOT FOUND === ";
+	}// end method
